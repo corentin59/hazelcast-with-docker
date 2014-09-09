@@ -1,0 +1,73 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/libs-snapshot" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.1.RELEASE")
+        //classpath("org.hidetake:gradle-ssh-plugin:0.3.10")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+war {
+    baseName = 'vlille'
+    version =  '2.0.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+    maven { url "http://m2.neo4j.org" }
+    maven { url "http://m2.neo4j.org/content/repositories/releases/" }
+}
+
+configurations {
+    providedRuntime
+}
+
+dependencies {
+
+    // Hazelcast
+    compile("com.hazelcast:hazelcast:3.1.6")
+    compile("com.hazelcast:hazelcast-client:3.1.6")
+
+    // Spring Thymeleaf engine
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+
+    // Lombock
+    compile("org.projectlombok:lombok:1.12.2")
+
+    // Jersey and co...
+    compile("com.sun.jersey:jersey-json:1.18.1")
+    compile("net.sf.json-lib:json-lib:2.4:jdk15")
+    compile("com.sun.jersey:jersey-client:1.11") {
+        //excluding a particular transitive dependency:
+        exclude group: 'org.springframework', module: 'spring'
+        exclude group: 'org.springframework', module: 'spring-core'
+        exclude group: 'org.springframework', module: 'spring-web'
+        exclude group: 'org.springframework', module: 'spring-beans'
+        exclude group: 'org.springframework', module: 'spring-context'
+    }
+    compile("com.sun.jersey.contribs:jersey-spring:1.18.1") {
+        //excluding a particular transitive dependency:
+        exclude group: 'org.springframework', module: 'spring'
+        exclude group: 'org.springframework', module: 'spring-core'
+        exclude group: 'org.springframework', module: 'spring-web'
+        exclude group: 'org.springframework', module: 'spring-beans'
+        exclude group: 'org.springframework', module: 'spring-context'
+    }
+
+    // Runtime spring boot starter (with tomcat)
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+}
+
+springBoot {
+    mainClass = "com.azelart.vlille.Application"
+}
