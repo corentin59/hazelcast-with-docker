@@ -1,4 +1,5 @@
-## FLASH30 : Hazelcast with Docker ##
+## CAPGEMINI FLASH30 : Hazelcast with Docker ##
+Session start in Capgemini : 18.09.2014 @ 12:30
 
 ### Sample
 This is a web application for display V'Lille stations in a browser.
