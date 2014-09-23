@@ -42,12 +42,12 @@ You can check startup with docker logs :
 #### 4. Display webapp :
 You can open the following URI :
 
-`http://10.24.202.133:4001/vlille-2.0.0/web/index.html`
+`http://SERVERIP:4001/vlille-2.0.0/web/index.html`
 
-`http://10.24.202.133:4002/vlille-2.0.0/web/index.html`
+`http://SERVERIP:4002/vlille-2.0.0/web/index.html`
 
-`http://10.24.202.133:4003/vlille-2.0.0/web/index.html`
+`http://SERVERIP:4003/vlille-2.0.0/web/index.html`
 
-`http://10.24.202.133:4004/vlille-2.0.0/web/index.html`
+`http://SERVERIP:4004/vlille-2.0.0/web/index.html`
 
-`http://10.24.202.133:4005/vlille-2.0.0/web/index.html`
+`http://SERVERIP:4005/vlille-2.0.0/web/index.html`
